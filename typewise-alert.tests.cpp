@@ -43,7 +43,7 @@ TEST(TypeWiseAlertTestSuite,Test_check_and_alter_Normal_breach) {
 Func_ptr_classifyTemperatureBreach = Mock_classifyTemperatureBreach;
 BreachType expected_breach = NORMAL;
 BatteryCharacter batteryChar = {PASSIVE_COOLING," "};
-checkAndAlert(TO_CONTROLLER,batteryChar,20);
+checkAndAlert(TO_CONTROLLER,batteryChar,5);
 EXPECT_EQ(mock_breach,expected_breach);
 
 }

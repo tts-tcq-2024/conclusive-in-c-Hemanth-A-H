@@ -3,10 +3,12 @@
 
 extern BreachType Mock_classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 extern BreachType  mock_breach;
+extern BreachType (*Func_ptr_classifyTemperatureBreach)(CoolingType, double);
 
 TEST(TypeWiseAlertTestSuite,Test_check_and_alter) {
 Func_ptr_classifyTemperatureBreach = Mock_classifyTemperatureBreach;
-checkAndAlert(TO_CONTROLLER,PASSIVE_COOLING,-10)
+BatteryCharacter batteryChar = {PASSIVE_COOLING," "};
+checkAndAlert(TO_CONTROLLER,batteryChar,-10);
 EXPECT_EQ(mock_breach,LOW);
 
 }

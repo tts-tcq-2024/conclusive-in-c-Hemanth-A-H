@@ -32,6 +32,7 @@ BreachType Mock_classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
     Limits limits = set_the_limits(coolingType); 
     mock_breach = inferBreach(temperatureInC, limits.lower_limit, limits.upper_limit);
+    return mock_breach;
 }
 
 void checkAndAlert(

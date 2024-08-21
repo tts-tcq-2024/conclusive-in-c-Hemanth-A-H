@@ -27,8 +27,8 @@ typedef struct {
 } BatteryCharacter;
 
 typedef struct{
-  int upper_limit;
   int lower_limit;
+  int upper_limit;
 }Limits;
 
 void checkAndAlert(

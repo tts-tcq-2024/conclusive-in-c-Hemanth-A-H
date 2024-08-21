@@ -22,6 +22,23 @@ checkAndAlert(TO_CONTROLLER,batteryChar,50);
 EXPECT_EQ(mock_breach,expected_breach);
 }
 
+TEST(TypeWiseAlertTestSuite,Test_check_and_alter_High_breach_Email) {
+Func_ptr_classifyTemperatureBreach = Mock_classifyTemperatureBreach;
+BreachType expected_breach = TOO_HIGH;
+BatteryCharacter batteryChar = {HI_ACTIVE_COOLING," "};
+checkAndAlert(TO_EMAIL,batteryChar,50);
+EXPECT_EQ(mock_breach,expected_breach);
+}
+
+
+TEST(TypeWiseAlertTestSuite,Test_check_and_alter_Low_breach_Email) {
+Func_ptr_classifyTemperatureBreach = Mock_classifyTemperatureBreach;
+BreachType expected_breach = TOO_LOW;
+BatteryCharacter batteryChar = {HI_ACTIVE_COOLING," "};
+checkAndAlert(TO_EMAIL,batteryChar,-1);
+EXPECT_EQ(mock_breach,expected_breach);
+}
+
 TEST(TypeWiseAlertTestSuite,Test_check_and_alter_Normal_breach) {
 Func_ptr_classifyTemperatureBreach = Mock_classifyTemperatureBreach;
 BreachType expected_breach = NORMAL;

@@ -1,6 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
+
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
     return TOO_LOW;
@@ -21,11 +22,21 @@ BreachType classifyTemperatureBreach(
     Limits limits = set_the_limits(coolingType); 
     return inferBreach(temperatureInC, limits.lower_limit, limits.upper_limit);
 }
+// Function pointer
+BreachType (*Func_ptr_classifyTemperatureBreach)(batteryChar.coolingType, temperatureInC) = classifyTemperatureBreach;
+
+//Mock interface
+BreachType mock_breach;
+BreachType Mock_classifyTemperatureBreach(
+    CoolingType coolingType, double temperatureInC) {
+    Limits limits = set_the_limits(coolingType); 
+    mock_breach = inferBreach(temperatureInC, limits.lower_limit, limits.upper_limit);
+}
 
 void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
-  BreachType breachType = classifyTemperatureBreach(
+  BreachType breachType = Func_ptr_classifyTemperatureBreach(
     batteryChar.coolingType, temperatureInC
   );
 

@@ -53,7 +53,7 @@ void sendToEmail(BreachType breachType) {
   
   if(breachType == 2) {
       printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too low\n");
+      printf("Hi, the temperature is too high\n");
   }
 }
 

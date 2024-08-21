@@ -22,8 +22,9 @@ BreachType classifyTemperatureBreach(
     Limits limits = set_the_limits(coolingType); 
     return inferBreach(temperatureInC, limits.lower_limit, limits.upper_limit);
 }
+
 // Function pointer
-BreachType (*Func_ptr_classifyTemperatureBreach)(batteryChar.coolingType, temperatureInC) = classifyTemperatureBreach;
+BreachType (*Func_ptr_classifyTemperatureBreach)(CoolingType, double) = classifyTemperatureBreach;
 
 //Mock interface
 BreachType mock_breach;
